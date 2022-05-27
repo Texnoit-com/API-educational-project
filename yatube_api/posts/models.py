@@ -48,6 +48,7 @@ class Post(models.Model):
         return self.text
 
     class Meta:
+        #ordering = ('-pub_date', 'author')
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
@@ -79,11 +80,11 @@ class Comment(models.Model):
 
 class Follow(models.Model):
     user = models.ForeignKey(User,
-                             on_delete=models.PROTECT,
+                             on_delete=models.CASCADE,
                              related_name='follower',
                              verbose_name='Подписчик')
     following = models.ForeignKey(User,
-                                  on_delete=models.PROTECT,
+                                  on_delete=models.CASCADE,
                                   related_name='following',
                                   verbose_name='Подписка')
 
